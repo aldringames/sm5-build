@@ -12,5 +12,11 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
         with:
           vs-prerelease: true
+      - name: Setup 7-Zip
+        run: |
+          iwr -useb get.scoop.sh -outfile 'install.ps1'
+          .\install.ps1 -RunAsAdmin
+          scoop update
+          scoop install 7zip
       - name: Build
         run: .\build.ps1

@@ -18,20 +18,24 @@ msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release"
 cd ..
 _msg "Copying StepMania files"
 mkdir -p Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Announcers -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path BackgroundEffects -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path BackgroundTransitions -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path BGAnimations -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Characters -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Courses -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Data -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Docs -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Manual -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path NoteSkins -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Program -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Scripts -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Songs -Destination Dist/StepMania
-Copy-Item -Verbose -Recurse -Force -Path Themes -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Announcers -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path BackgroundEffects -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path BackgroundTransitions -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path BGAnimations -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Characters -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Courses -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Data -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Docs -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Manual -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path NoteSkins -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Program -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Scripts -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Songs -Destination Dist/StepMania
+Copy-Item -Recurse -Force -Path Themes -Destination Dist/StepMania
+$datestamp = (Get-Date).ToString("yyyyMMdd")
+$datestamp | Out-File -FilePath Dist/StepMania/datestamp
 "" | Out-File -FilePath Dist/StepMania/portable.ini
+_msg "Create archive as a SM5-Build"
+7z a SM5-Build-win64-$datestamp.zip Dist/StepMania
 ls
 ls Dist/StepMania
