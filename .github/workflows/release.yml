@@ -20,3 +20,10 @@ jobs:
           scoop install 7zip
       - name: Build
         run: .\build.ps1
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: true
+          name: "SM5-Build-${{ env.DATESTAMP }}"
+          tag_name: ${{ env.DATESTAMP }}
+          files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
