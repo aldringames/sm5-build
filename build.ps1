@@ -22,14 +22,15 @@ Remove-Item src/archutils/Win32/StepMania.ico
 Copy-Item stepmania-legacy/src/archutils/Win32/StepMania.ico src/archutils/Win32
 Remove-Item Data/splash.png
 Copy-Item stepmania-legacy/Data/splash.png Data
-Remove-Item -Recurse -Force stepmania-legacy
 Remove-Item -Recurse -Force Themes/default
-Remove-Item -Recurse -Force Themes/home
+# Remove-Item -Recurse -Force Themes/home
 Remove-Item -Recurse -Force Themes/legacy
-git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5 "Themes/Simply Love"
-git clone --depth=1 https://github.com/JoseVarelaP/SM5-GrooveNights "Themes/ITG GrooveNights"
-git clone --depth=1 https://github.com/MidflightDigital/XX--STARLiGHT--twopointzero "Themes/DDR XX -STARLiGHT- 2.0"
-Remove-Item -Recurse -Force Themes/*/.git
+Copy-Item -Recurse -Force -Path stepmania-legacy/Themes/default -Destination Themes
+#git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5 "Themes/Simply Love"
+#git clone --depth=1 https://github.com/JoseVarelaP/SM5-GrooveNights "Themes/ITG GrooveNights"
+#git clone --depth=1 https://github.com/MidflightDigital/XX--STARLiGHT--twopointzero "Themes/DDR XX -STARLiGHT- 2.0"
+#Remove-Item -Recurse -Force Themes/*/.git
+Remove-Item -Recurse -Force stepmania-legacy
 _msg "Copying StepMania files"
 mkdir -p Dist/StepMania
 Copy-Item -Recurse -Force -Path Announcers -Destination Dist/StepMania
@@ -50,5 +51,5 @@ $datestamp = (Get-Date).ToString("yyyyMMdd")
 $datestamp | Out-File -FilePath Dist/StepMania/datestamp
 "" | Out-File -FilePath Dist/StepMania/portable.ini
 _msg "Create archive as a SM5-Build"
-7z a SM5-Build-win64-$datestamp.zip Dist/StepMania
-ls Dist/StepMania
+7z a ../SM5-Build-win64-$datestamp.zip Dist/StepMania
+echo "DATESTAMP=$datestamp" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
