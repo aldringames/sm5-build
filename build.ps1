@@ -22,14 +22,14 @@ Remove-Item src/archutils/Win32/StepMania.ico
 Copy-Item stepmania-legacy/src/archutils/Win32/StepMania.ico src/archutils/Win32
 Remove-Item Data/splash.png
 Copy-Item stepmania-legacy/Data/splash.png Data
-Remove-Item -Recurse stepmania-legacy
-Remove-Item -Recurse Themes/default
-Remove-Item -Recurse Themes/home
-Remove-Item -Recurse Themes/legacy
+Remove-Item -Recurse -Force stepmania-legacy
+Remove-Item -Recurse -Force Themes/default
+Remove-Item -Recurse -Force Themes/home
+Remove-Item -Recurse -Force Themes/legacy
 git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5 "Themes/Simply Love"
 git clone --depth=1 https://github.com/JoseVarelaP/SM5-GrooveNights "Themes/ITG GrooveNights"
 git clone --depth=1 https://github.com/MidflightDigital/XX--STARLiGHT--twopointzero "Themes/DDR XX -STARLiGHT- 2.0"
-Remove-Item -Recurse Themes/*/.git
+Remove-Item -Recurse -Force Themes/*/.git
 _msg "Copying StepMania files"
 mkdir -p Dist/StepMania
 Copy-Item -Recurse -Force -Path Announcers -Destination Dist/StepMania
