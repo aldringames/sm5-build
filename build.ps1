@@ -51,5 +51,6 @@ $datestamp = (Get-Date).ToString("yyyyMMdd")
 $datestamp | Out-File -FilePath Dist/StepMania/datestamp
 "" | Out-File -FilePath Dist/StepMania/portable.ini
 _msg "Create archive as a SM5-Build"
-7z a ../SM5-Build-win64-$datestamp.zip Dist/StepMania
+7z a ../SM5-Build-$datestamp-win64.zip Dist/StepMania
 echo "DATESTAMP=$datestamp" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+cd ..
