@@ -40,6 +40,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
         with:
           vs-prerelease: true
+          msbuild-architecture: arm64
       - name: Setup 7-Zip
         run: |
           iwr -useb get.scoop.sh -outfile 'install.ps1'
