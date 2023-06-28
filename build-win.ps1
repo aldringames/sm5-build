@@ -8,15 +8,13 @@ function _msg {
 	Write-Host ">> " -ForegroundColor Green -NoNewline; Write-Host "$Message"
 }
 
-_msg "Entering stepmania"
+_msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
-_msg "Configuring stepmania"
+_msg "Configuring sm"
 cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 ..
-_msg "Building stepmania"
+_msg "Building sm"
 msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release"
-cpack
-ls
 cd ..
 _msg "Using SM5-Build derivatives"
 Remove-Item -Recurse -Force Themes/default

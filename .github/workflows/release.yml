@@ -24,7 +24,7 @@ jobs:
           scoop update
           scoop install 7zip
       - name: Build
-        run: .\build.ps1
+        run: .\build-win.ps1
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -36,6 +36,11 @@ jobs:
     steps:
       - name: Repository checkout
         uses: actions/checkout@v3
+      - name: Setup XCode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
       - name: Install dependencies
-        run: brew install nasm p7zip
-      
+        run: brew install nasm
+      - name: Build
+        run: ./build-mac.sh
