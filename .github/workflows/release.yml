@@ -31,3 +31,12 @@ jobs:
           name: SM5-Build-${{ env.DATESTAMP }}
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
+  macos-build:
+    runs-on: macos-latest
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: brew install nasm p7zip
+      - name: Build
+
