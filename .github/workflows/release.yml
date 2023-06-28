@@ -8,7 +8,7 @@ on:
     - cron: "0 12 15 * *"
 
 jobs:
-  windows-build:
+  windows-x64-build:
     runs-on: windows-latest
     steps:
       - name: Repository checkout
@@ -24,10 +24,33 @@ jobs:
           scoop update
           scoop install 7zip
       - name: Build
-        run: .\build.ps1
+        run: .\build.x64.ps1
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           name: "SM5-Build-${{ env.DATESTAMP }}"
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
+          files: SM5-Build-${{ env.DATESTAMP }}-win-x64.zip
+  windows-arm64-build:
+    runs-on: windows-latest
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+        with:
+          vs-prerelease: true
+      - name: Setup 7-Zip
+        run: |
+          iwr -useb get.scoop.sh -outfile 'install.ps1'
+          .\install.ps1 -RunAsAdmin
+          scoop update
+          scoop install 7zip
+      - name: Build
+        run: .\build.arm64.ps1
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "SM5-Build-${{ env.DATESTAMP }}"
+          tag_name: ${{ env.DATESTAMP }}
+          files: SM5-Build-${{ env.DATESTAMP }}-win-arm64.zip
