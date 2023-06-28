@@ -12,9 +12,9 @@ _msg "Entering stepmania"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm5
 cd sm5/Build
 _msg "Configuring stepmania"
-cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 ..
+cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A ARM64 ..
 _msg "Building stepmania"
-msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release"
+msbuild StepMania.sln /p:Platform="ARM64" /p:Configuration="Release"
 cd ..
 _msg "Using SM5-Build derivatives"
 Remove-Item -Recurse -Force Themes/default
@@ -41,10 +41,10 @@ Copy-Item -Recurse -Force -Path Themes -Destination StepMania
 Move-Item -Path StepMania -Destination ../
 cd ..
 $datestamp = (Get-Date).ToString("yyyyMMdd")
-$datestamp | Out-File -FilePath StepMania/datestamp
+$datestamp | Out-File -FilePath StepMania/date.stamp
 "" | Out-File -FilePath StepMania/portable.ini
 _msg "Create archive as a SM5-Build"
 cd StepMania
-7z a ../SM5-Build-$datestamp-win64.zip *
+7z a ../SM5-Build-$datestamp-win-arm64.zip *
 echo "DATESTAMP=$datestamp" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 cd ..
