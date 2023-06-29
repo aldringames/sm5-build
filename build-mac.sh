@@ -14,10 +14,10 @@ do
 	rm -rf Themes/*/.git
 	_msg "Configuring sm (${arch})"
 	cd Build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="${arch}" -G Xcode ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="${arch}" -G Ninja ..
 	_msg "Building sm"
 	ls
-	xcodebuild -project StepMania.xcodeproj -configuration Release
+	ninja
 	ls
 	cpack
 	ls
