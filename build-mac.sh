@@ -13,6 +13,7 @@ do
 	git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5.git "Themes/Simply Love"
 	rm -rf Themes/*/.git
 	_msg "Configuring sm (${arch})"
+	cd Build
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="${arch}" -G Xcode ..
 	_msg "Building sm"
 	ls
