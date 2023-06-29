@@ -15,7 +15,7 @@ cd sm/Build
 _msg "Configuring sm"
 cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 _msg "Building sm"
-cmake .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
+msbuild Etterna.sln /p:Configuration="Release" /p:Platform="x64" | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 cd ..
 _msg "Using SM5-Build derivatives"
 Remove-Item -Recurse -Force Themes/default

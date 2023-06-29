@@ -22,7 +22,7 @@ jobs:
           iwr -useb get.scoop.sh -outfile 'install.ps1'
           .\install.ps1 -RunAsAdmin
           scoop update
-          scoop install 7zip nasm
+          scoop install 7zip nasm ninja
       - name: Build
         run: .\build.ps1
       - name: Release
