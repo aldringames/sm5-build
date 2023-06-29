@@ -8,13 +8,14 @@ function _msg {
 	Write-Host ">> " -ForegroundColor Green -NoNewline; Write-Host "$Message"
 }
 
+mkdir -p StepMania
 _msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
 _msg "Configuring sm"
-cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 ..
+cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 _msg "Building sm"
-msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release"
+msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release" | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 cd ..
 _msg "Using SM5-Build derivatives"
 Remove-Item -Recurse -Force Themes/default
@@ -24,7 +25,6 @@ git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5.git "Themes/S
 Remove-Item -Recurse -Force Themes/*/.git
 Remove-Item -Recurse -Force "Songs/StepMania 5"
 _msg "Copying StepMania files"
-mkdir -p StepMania
 Copy-Item -Recurse -Force -Path Announcers -Destination StepMania
 Copy-Item -Recurse -Force -Path BackgroundEffects -Destination StepMania
 Copy-Item -Recurse -Force -Path BackgroundTransitions -Destination StepMania
