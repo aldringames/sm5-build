@@ -7,7 +7,7 @@ for arch in x86_64 arm64
 do
 	_msg "Entering sm (${arch})"
 	git clone --depth=1 https://github.com/stepmania/stepmania.git "sm-${arch}"
-	cd "sm5-${arch}"
+	cd "sm-${arch}"
 	_msg "Using SM5-Build derivatives"
 	rm -rf Themes/{default,home,legacy}
 	git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5.git "Themes/Simply Love"
