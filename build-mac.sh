@@ -17,7 +17,7 @@ do
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="${arch}" ..
 	_msg "Building sm"
 	ls
-	cmake --build ..
+	cmake --build .
 	ls
 	cpack
 	ls
