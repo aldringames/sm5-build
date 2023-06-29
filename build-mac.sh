@@ -21,6 +21,7 @@ cpack
 mkdir ../../SM5
 tar -xf *.tar* -C ../../SM5
 cd ../../SM5
+ls
 mv * StepMania
 datestamp="$(date +%Y%m%d)"
 echo "$datestamp" >> StepMania/date.stamp
