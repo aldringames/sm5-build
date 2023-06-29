@@ -6,7 +6,7 @@ _msg() {
 for arch in x86_64 arm64
 do
 	_msg "Entering sm (${arch})"
-	git clone --depth=1 https://github.com/stepmania/stepmania.git "sm-${arch}"
+	git clone --depth=1 --recurse-submodules https://github.com/stepmania/stepmania.git "sm-${arch}"
 	cd "sm-${arch}"
 	_msg "Using SM5-Build derivatives"
 	rm -rf Themes/{default,home,legacy}
