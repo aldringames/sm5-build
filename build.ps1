@@ -13,9 +13,9 @@ _msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
 _msg "Configuring sm"
-cmake -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64 .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
+cmake -DCMAKE_BUILD_TYPE=Release -A x64 .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 _msg "Building sm"
-msbuild StepMania.sln /p:Platform="x64" /p:Configuration="Release" | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
+cmake .. | Out-File -FilePath ../../StepMania/build.log -Encoding utf8 -Append
 cd ..
 _msg "Using SM5-Build derivatives"
 Remove-Item -Recurse -Force Themes/default
