@@ -41,6 +41,6 @@ jobs:
         with:
           xcode-version: latest-stable
       - name: Install dependencies
-        run: brew install cmake nasm ninja
+        run: brew install nasm
       - name: Build
         run: ./build-mac.sh
