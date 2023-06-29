@@ -19,7 +19,8 @@ cmake --build .
 _msg "Creating dmg archive using cpack"
 cpack
 mkdir ../../SM5
-tar -xf *.tar* -C ../../SM5
+ls
+tar -xvf *.tar* -C ../../SM5
 cd ../../SM5
 ls
 mv * StepMania
