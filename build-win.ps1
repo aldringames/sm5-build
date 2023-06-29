@@ -42,8 +42,9 @@ Copy-Item -Recurse -Force -Path Themes -Destination StepMania
 Move-Item -Path StepMania -Destination ../
 cd ..
 "" | Out-File -FilePath StepMania/portable.ini
-_msg "Create archive as a SM5-Build"
 $datestamp = (Get-Date).ToString("yyyyMMdd")
+$datestamp | Out-File -FilePath StepMania/date.stamp
+_msg "Create archive as a SM5-Build"
 7z a SM5-Build-$datestamp-win64.zip StepMania
 echo "DATESTAMP=$datestamp" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 Remove-Item -Recurse -Force sm

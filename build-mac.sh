@@ -17,8 +17,14 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 _msg "Building sm"
 cmake --build .
 _msg "Creating dmg archive using cpack"
-cpack -G DragNDrop
+cpack
+mkdir ../../SM5
+tar -xf *.tar* -C ../../SM5
+cd ../../SM5
+mv * StepMania
 datestamp="$(date +%Y%m%d)"
-mv *.dmg ../../SM5-Build-$datestamp-mac.dmg
+echo "$datestamp" >> StepMania/date.stamp
+cd ..
+create-dmg --volname StepMania "SM5-Build-$datestamp-mac.dmg" SM5
 echo "DATESTAMP=$datestamp" >> "$GITHUB_ENV"
-cd ../..
+rm -rf sm SM5

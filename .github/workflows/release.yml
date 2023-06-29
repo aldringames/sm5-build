@@ -34,13 +34,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Repository checkout
-        uses: actions/checkout@v3
-      - name: Setup XCode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
+        uses: actions/checkout@v3   
       - name: Install dependencies
-        run: brew install nasm
+        run: brew install nasm create-dmg
       - name: Build
         run: ./build-mac.sh
       - name: Release
