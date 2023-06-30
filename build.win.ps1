@@ -25,21 +25,20 @@ git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5.git "Themes/S
 Remove-Item -Recurse -Force Themes/*/.git
 Remove-Item -Recurse -Force "Songs/StepMania 5"
 _msg "Copying StepMania files"
-Copy-Item -Recurse -Force -Path Announcers -Destination StepMania
-Copy-Item -Recurse -Force -Path BackgroundEffects -Destination StepMania
-Copy-Item -Recurse -Force -Path BackgroundTransitions -Destination StepMania
-Copy-Item -Recurse -Force -Path BGAnimations -Destination StepMania
-Copy-Item -Recurse -Force -Path Characters -Destination StepMania
-Copy-Item -Recurse -Force -Path Courses -Destination StepMania
-Copy-Item -Recurse -Force -Path Data -Destination StepMania
-Copy-Item -Recurse -Force -Path Docs -Destination StepMania
-Copy-Item -Recurse -Force -Path Manual -Destination StepMania
-Copy-Item -Recurse -Force -Path NoteSkins -Destination StepMania
-Copy-Item -Recurse -Force -Path Program -Destination StepMania
-Copy-Item -Recurse -Force -Path Scripts -Destination StepMania
-Copy-Item -Recurse -Force -Path Songs -Destination StepMania
-Copy-Item -Recurse -Force -Path Themes -Destination StepMania
-Move-Item -Path StepMania -Destination ../
+Copy-Item -Recurse -Force -Path Announcers            -Destination ../StepMania
+Copy-Item -Recurse -Force -Path BackgroundEffects     -Destination ../StepMania
+Copy-Item -Recurse -Force -Path BackgroundTransitions -Destination ../StepMania
+Copy-Item -Recurse -Force -Path BGAnimations          -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Characters            -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Courses               -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Data                  -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Docs                  -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Manual                -Destination ../StepMania
+Copy-Item -Recurse -Force -Path NoteSkins             -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Program               -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Scripts               -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Songs                 -Destination ../StepMania
+Copy-Item -Recurse -Force -Path Themes                -Destination ../StepMania
 cd ..
 "" | Out-File -FilePath StepMania/portable.ini
 $datestamp = (Get-Date).ToString("yyyyMMdd")
