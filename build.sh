@@ -8,9 +8,11 @@ _msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
 _msg "Configuring sm"
-cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" .. >> ../../StepMania/build.log
+cmake -DCMAKE_BUILD_TYPE=Release -G Xcode .. >> ../../StepMania/build.log
 _msg "Building sm"
-cmake --build . >> ../../StepMania/build.log
+ls
+xcodebuild -project StepMania.xcodeproj -configuration Release >> ../../StepMania/build.log
+ls
 cpack
 ls
 cd ..
