@@ -24,7 +24,7 @@ jobs:
           scoop update
           scoop install 7zip nasm
       - name: Build
-        run: .\build.ps1
+        run: .\build.win.ps1
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -72,7 +72,7 @@ jobs:
           libxtst-dev
           ninja-build
       - name: Build
-        run: ./build.sh
+        run: ./build.linux.sh
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
