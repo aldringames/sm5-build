@@ -30,17 +30,32 @@ jobs:
         with:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
-  build-macos:
-    runs-on: macos-latest
+  build-linux:
+    runs-on: ubuntu-latest
     steps:
       - name: Repository checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: brew install nasm create-dmg
+        run: sudo apt-get -qqy update && sudo apt-get -qqy install
+          libasound2-dev
+          libgl-dev
+          libglew-dev
+          libgtk-3-dev
+          libjack-dev
+          libmad0-dev
+          libpulse-dev
+          libudev-dev
+          libva-dev
+          libvorbis-dev
+          libxinerama-dev
+          libx11-dev
+          libxrandr-dev
+          libxtst-dev
+          nasm
       - name: Build
         run: ./build.sh
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
+          files: SM5-Build-${{ env.DATESTAMP }}-linux.tar.gz
