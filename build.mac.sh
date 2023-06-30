@@ -19,6 +19,7 @@ rm -rf Themes/*/.git
 rm -rf "Songs/StepMania 5"
 _msg "Copying StepMania files"
 cp -rf {Announcers,Background{Effects,Transitions},BGAnimations,Characters,Courses,Data,Docs,Manual,NoteSkins,Scripts,Songs,Themes,StepMania.app} ../StepMania
+cd ..
 datestamp="$(date +%Y%m%d)"
 echo "$datestamp" >> StepMania/date.stamp
 mkdir dmg
@@ -26,4 +27,4 @@ mv StepMania dmg
 _msg "Create archive as SM5-Build"
 create-dmg --volname "SM5-Build-$datestamp" SM5-Build-$datestamp-mac.dmg dmg
 echo "DATESTAMP=$datestamp" >> $GITHUB_ENV
-rm -rf dmg sm
+rm -rf dmg sm StepMania
