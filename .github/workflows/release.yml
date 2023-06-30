@@ -8,7 +8,7 @@ on:
     - cron: "30 12 15 * *"
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
     steps:
       - name: Repository checkout
@@ -30,3 +30,17 @@ jobs:
         with:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
+  build-macos:
+    runs-on: windows-latest
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: brew install nasm create-dmg
+      - name: Build
+        run: ./build.sh
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.DATESTAMP }}
+          files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg

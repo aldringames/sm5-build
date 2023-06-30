@@ -8,7 +8,7 @@ function _msg {
 	Write-Host ">> " -ForegroundColor Green -NoNewline; Write-Host "$Message"
 }
 
-mkdir -p StepMania
+mkdir StepMania
 _msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
