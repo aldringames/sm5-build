@@ -11,5 +11,6 @@ _msg "Configuring sm"
 cmake -DCMAKE_BUILD_TYPE=Release -G Xcode -A x64 .. >> ../../StepMania/build.log
 _msg "Building sm"
 cmake .. >> ../../StepMania/build.log
+cpack
 ls
 cd ..
