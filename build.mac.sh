@@ -19,7 +19,7 @@ rm -rf Themes/*/.git
 rm -rf "Songs/StepMania 5"
 _msg "Copying StepMania files"
 cp -rf {Announcers,Background{Effects,Transitions},BGAnimations,Characters,Courses,Data,Docs,Manual,NoteSkins,Scripts,Songs,Themes,StepMania.app} ../StepMania
-datestamp = "$(date +%Y%m%d)"
+datestamp="$(date +%Y%m%d)"
 echo "$datestamp" >> StepMania/date.stamp
 mkdir dmg
 mv StepMania dmg
