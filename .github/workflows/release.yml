@@ -31,7 +31,7 @@ jobs:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
   build-macos:
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
       - name: Repository checkout
         uses: actions/checkout@v3
