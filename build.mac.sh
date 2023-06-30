@@ -10,6 +10,6 @@ cd sm/Build
 _msg "Configuring sm"
 cmake -DCMAKE_BUILD_TYPE=Release >> ../../StepMania/build.log
 _msg "Building sm"
-cmake --build . >> ../../StepMania/build.log
+cmake .. >> ../../StepMania/build.log
 cd ..
 ls
