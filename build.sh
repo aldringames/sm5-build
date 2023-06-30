@@ -22,9 +22,6 @@ cmake -DCMAKE_BUILD_TYPE=Release \
       -DWITH_SYSTEM_ZLIB=ON      \
       -G Ninja .. >> ../../StepMania/build.log
 _msg "Building sm"
-ls
 ninja >> ../../StepMania/build.log
-ls
-cpack
-ls
 cd ..
+ls
