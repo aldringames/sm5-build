@@ -30,6 +30,20 @@ jobs:
         with:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: brew install nasm
+      - name: Build
+        run: ./build.mac.sh
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.DATESTAMP }}
+          files: SM5-Build-${{ env.DATESTAMP }}-mac.zip
   build-linux:
     runs-on: ubuntu-latest
     steps:
