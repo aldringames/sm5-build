@@ -57,7 +57,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Build
         run: |
-          docker run -it --name sm5-build-${{ matrix.arch }} --platform=${{ matrix.arch }} ubuntu:latest /bin/bash <<EOL
+          docker run --name sm5-build-${{ matrix.arch }} --platform=${{ matrix.arch }} ubuntu:latest /bin/bash <<EOL
           apt-get -qqy update
           apt-get -qqy install \
             ffmpeg             \
