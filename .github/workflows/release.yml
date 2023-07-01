@@ -8,7 +8,7 @@ on:
     - cron: "30 12 15 * *"
 
 jobs:
-  build-windows:
+  windows:
     runs-on: windows-latest
     steps:
       - name: Repository checkout
@@ -30,7 +30,7 @@ jobs:
         with:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
-  build-mac:
+  macos:
     runs-on: macos-latest
     steps:
       - name: Repository checkout
@@ -44,7 +44,7 @@ jobs:
         with:
           tag_name: ${{ env.DATESTAMP }}
           files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
-  build-linux:
+  linux:
     runs-on: ubuntu-latest
     steps:
       - name: Repository checkout
@@ -53,6 +53,7 @@ jobs:
         run: sudo apt-get -qqy update && sudo apt-get -qqy install
           libasound2-dev
           libgl-dev
+          libglew-dev
           libglu1-mesa-dev
           libgtk-3-dev
           libjack-dev
@@ -60,6 +61,8 @@ jobs:
           libpulse-dev
           libudev-dev
           libusb-dev
+          libva-dev
+          libvorbis-dev
           libxinerama-dev
           libx11-dev
           libxrandr-dev
