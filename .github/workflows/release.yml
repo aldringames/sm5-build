@@ -59,7 +59,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Build
         run: |
-          docker buildx build --platfrom=${{ matrix.arch }} -t sm5-build -f Dockerfile.linux .
+          docker buildx build --platform=${{ matrix.arch }} -t sm5-build -f Dockerfile.linux .
           datestamp="$(date +%Y%m%d)"
           docker cp $(docker create sm5-build):/sm5-build/SM5-Build.tar.xz SM5-Build-$datestamp-linux-${{ matrix.arch }}.tar.xz
           echo "DATESTAMP=$datestamp" >> $GITHUB_ENV
