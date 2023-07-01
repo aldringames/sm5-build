@@ -45,7 +45,7 @@ cd ..
 $datestamp = (Get-Date).ToString("yyyyMMdd")
 $datestamp | Out-File -FilePath StepMania/date.stamp
 _msg "Create archive as a SM5-Build"
-7z a SM5-Build-$datestamp-win64.zip StepMania
+7z a SM5-Build-$datestamp-windows.zip StepMania
 Remove-Item -Recurse -Force sm
 Remove-Item -Recurse -Force StepMania
 "DATESTAMP=$datestamp" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append

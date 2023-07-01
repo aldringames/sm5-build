@@ -5,10 +5,10 @@ on:
     branches:
       - main
   schedule:
-    - cron: "30 12 15 * *"
+    - cron: "30 12 5,15,25 * *"
 
 jobs:
-  windows:
+  build-windows:
     runs-on: windows-latest
     steps:
       - name: Repository checkout
@@ -24,13 +24,13 @@ jobs:
           scoop update
           scoop install 7zip nasm
       - name: Build
-        run: .\build.win.ps1
+        run: .\build.windows.ps1
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
-  macos:
+          files: SM5-Build-${{ env.DATESTAMP }}-windows.zip
+  build-macos:
     runs-on: macos-latest
     steps:
       - name: Repository checkout
@@ -38,13 +38,13 @@ jobs:
       - name: Install dependencies
         run: brew install nasm create-dmg
       - name: Build
-        run: ./build.mac.sh
+        run: ./build.macos.sh
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
-  linux:
+          files: SM5-Build-${{ env.DATESTAMP }}-macos.dmg
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - name: Repository checkout

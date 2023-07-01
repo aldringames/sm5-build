@@ -26,6 +26,6 @@ echo "$datestamp" > StepMania/date.stamp
 mkdir dmg
 mv StepMania dmg
 _msg "Create archive as SM5-Build"
-create-dmg --volname "SM5-Build-$datestamp" SM5-Build-$datestamp-mac.dmg dmg
+create-dmg --volname "SM5-Build-$datestamp" SM5-Build-$datestamp-macos.dmg dmg
 rm -rf dmg sm StepMania
 echo "DATESTAMP=$datestamp" >> $GITHUB_ENV

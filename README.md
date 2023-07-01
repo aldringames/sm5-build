@@ -1,6 +1,6 @@
 # SM5 Build
 
-Portable version only for StepMania 5.1 and Etterna.
+Stepmania 5.1 weekly builds for Windows, macOS, and Linux.
 
 ## Screenshots
 
