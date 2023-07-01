@@ -5,10 +5,10 @@ _msg() {
 
 mkdir StepMania
 _msg "Entering sm"
-git clone --depth=1 --recurse-submodules https://github.com/stepmania/stepmania.git sm
+git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
 _msg "Configuring sm"
-cmake -DCMAKE_BUILD_TYPE=Release .. >> ../../StepMania/build.log
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=$1 .. >> ../../StepMania/build.log
 _msg "Building sm"
 cmake --build . >> ../../StepMania/build.log
 cd ..
@@ -25,6 +25,6 @@ echo "$datestamp" >> StepMania/date.stamp
 mkdir dmg
 mv StepMania dmg
 _msg "Create archive as SM5-Build"
-create-dmg --volname "SM5-Build-$datestamp" SM5-Build-$datestamp-mac.dmg dmg
+create-dmg --volname "SM5-Build-$datestamp" SM5-Build-$datestamp-mac-$1.dmg dmg
 echo "DATESTAMP=$datestamp" >> $GITHUB_ENV
 rm -rf dmg sm StepMania
