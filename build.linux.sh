@@ -24,5 +24,6 @@ cd ..
 datestamp="$(date +%Y%m%d)"
 echo "$datestamp" > stepmania/date.stamp
 _msg "Create archive as SM5-Build"
-tar -cJf SM5-Build.tar.xz stepmania
+tar -cJf SM5-Build-$datestamp-linux.tar.xz stepmania
 rm -rf sm stepmania
+echo "DATESTAMP=$datestamp" >> $GITHUB_ENV

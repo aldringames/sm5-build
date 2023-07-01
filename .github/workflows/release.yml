@@ -46,25 +46,29 @@ jobs:
           files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
   build-linux:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        arch: [amd64, arm64]
     steps:
       - name: Repository checkout
         uses: actions/checkout@v3
-      - name: Setup QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      - name: Install dependencies
+        run: sudo apt-get -qqy update && sudo apt-get -qqy install
+          libasound2-dev
+          libgl-dev
+          libglu1-mesa-dev
+          libgtk-3-dev
+          libjack-dev
+          libmad0-dev
+          libpulse-dev
+          libudev-dev
+          libusb-dev
+          libxinerama-dev
+          libx11-dev
+          libxrandr-dev
+          libxtst-dev
+          nasm
       - name: Build
-        run: |
-          docker buildx build --platform=${{ matrix.arch }} -t sm5-build -f Dockerfile.linux .
-          datestamp="$(date +%Y%m%d)"
-          docker cp $(docker create sm5-build):/sm5-build/SM5-Build.tar.xz SM5-Build-$datestamp-linux-${{ matrix.arch }}.tar.xz
-          echo "DATESTAMP=$datestamp" >> $GITHUB_ENV
+        run: ./build.linux.sh
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-linux-${{ matrix.arch }}.tar.xz
+          files: SM5-Build-${{ env.DATESTAMP }}-linux.tar.xz
