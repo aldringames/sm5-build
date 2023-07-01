@@ -32,22 +32,18 @@ jobs:
           files: SM5-Build-${{ env.DATESTAMP }}-win64.zip
   build-mac:
     runs-on: macos-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        arch: [x86_64, arm64]
     steps:
       - name: Repository checkout
         uses: actions/checkout@v3
       - name: Install dependencies
         run: brew install nasm create-dmg
       - name: Build
-        run: ./build.mac.sh ${{ matrix.arch }}
+        run: ./build.mac.sh
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-mac-${{ matrix.arch }}.dmg
+          files: SM5-Build-${{ env.DATESTAMP }}-mac-*.dmg
   build-linux:
     runs-on: ubuntu-latest
     steps:
