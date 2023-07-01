@@ -8,7 +8,7 @@ _msg "Entering sm"
 git clone --depth=1 https://github.com/stepmania/stepmania.git sm
 cd sm/Build
 _msg "Configuring sm"
-cmake -DCMAKE_BUILD_TYPE=Release .. >> ../../StepMania/build.log
+cmake -DCMAKE_BUILD_TYPE=Release -Wno-dev .. >> ../../StepMania/build.log
 _msg "Building sm"
 cmake --build . >> ../../StepMania/build.log
 cd ..

@@ -1,19 +1,14 @@
-FROM ubuntu:latest
+FROM debian:latest
 
 RUN apt-get -qqy update \
   && apt-get -qqy install \
-    ffmpeg \
     libasound2-dev \
     libgl-dev \
     libglew-dev \
     libgtk-3-dev \
     libjack-dev \
-    libjsoncpp-dev \
     libmad0-dev \
-    libpng-dev \
     libpulse-dev \
-    libtomcrypt-dev \
-    libtommath-dev \
     libudev-dev \
     libva-dev \
     libvorbis-dev \
@@ -21,6 +16,9 @@ RUN apt-get -qqy update \
     libx11-dev \
     libxrandr-dev \
     libxtst-dev \
+    nasm \
+    bzip2 \
+    libbz2-dev \
     git \
     build-essential \
     cmake \
