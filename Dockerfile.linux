@@ -1,0 +1,29 @@
+FROM ubuntu:latest
+
+RUN apt-get -qqy update \
+  && apt-get -qqy install \
+    git \
+    ffmpeg \
+    libasound2-dev \
+    libgl-dev \
+    libglew-dev \
+    libgtk-3-dev \
+    libjack-dev \
+    libjsoncpp-dev \
+    libmad0-dev \
+    libpng-dev \
+    libpulse-dev \
+    libtomcrypt-dev \
+    libtommath-dev \
+    libudev-dev \
+    libva-dev \
+    libvorbis-dev \
+    libxinerama-dev \
+    libx11-dev \
+    libxrandr-dev \
+    libxtst-dev \
+    ninja-build
+
+RUN git clone https://github.com/aldringames/sm5-build.git \
+  && cd sm5-build \
+  && ./build.unix.sh
