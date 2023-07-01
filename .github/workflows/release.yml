@@ -46,33 +46,45 @@ jobs:
           files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
   build-linux:
     runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          arch: [amd64, arm64]
     steps:
-      - name: Repository checkout
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: sudo apt-get -qqy update && sudo apt-get -qqy install
-          ffmpeg
-          libasound2-dev
-          libgl-dev
-          libglew-dev
-          libgtk-3-dev
-          libjack-dev
-          libjsoncpp-dev
-          libmad0-dev
-          libpng-dev
-          libpulse-dev
-          libtomcrypt-dev
-          libtommath-dev
-          libudev-dev
-          libva-dev
-          libvorbis-dev
-          libxinerama-dev
-          libx11-dev
-          libxrandr-dev
-          libxtst-dev
-          ninja-build
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Build
-        run: ./build.linux.sh
+        run: |
+          docker run -it --name sm5-build-${{ matrix.arch }} --platform=${{ matrix.arch }} ubuntu:latest /bin/bash <<EOL
+          apt-get -qqy update
+          apt-get -qqy install \
+            ffmpeg             \
+            libasound2-dev     \
+            libgl-dev          \
+            libglew-dev        \
+            libgtk-3-dev       \
+            libjack-dev        \
+            libjsoncpp-dev     \
+            libmad0-dev        \
+            libpng-dev         \
+            libpulse-dev       \
+            libtomcrypt-dev    \
+            libtommath-dev     \
+            libudev-dev        \
+            libva-dev          \
+            libvorbis-dev      \
+            libxinerama-dev    \
+            libx11-dev         \
+            libxrandr-dev      \
+            libxtst-dev        \
+            ninja-build
+          git clone https://github.com/aldringames/sm5-build.git
+          cd sm5-build
+          ./build.unix.sh
+          EOL
+          echo "DATESTAMP=$datestamp" >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
