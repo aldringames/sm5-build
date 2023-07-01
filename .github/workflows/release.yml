@@ -43,7 +43,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.DATESTAMP }}
-          files: SM5-Build-${{ env.DATESTAMP }}-mac-*.dmg
+          files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
   build-linux:
     runs-on: ubuntu-latest
     steps:
