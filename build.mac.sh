@@ -11,7 +11,8 @@ do
 	cd sm/Build
 	_msg "Configuring sm"
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=$arch .. >> ../../StepMania/build.log
-	_msg "Building sm"cmake --build . >> ../../StepMania/build.log
+	_msg "Building sm"
+	cmake --build . >> ../../StepMania/build.log
 	cd ..
 	_msg "Using SM5-Build derivatives"
 	rm -rf Themes/{default,home,legacy}
