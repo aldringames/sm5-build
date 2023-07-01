@@ -46,10 +46,10 @@ jobs:
           files: SM5-Build-${{ env.DATESTAMP }}-mac.dmg
   build-linux:
     runs-on: ubuntu-latest
-      strategy:
-        fail-fast: false
-        matrix:
-          arch: [amd64, arm64]
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [amd64, arm64]
     steps:
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v2
