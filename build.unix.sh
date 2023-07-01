@@ -22,7 +22,7 @@ cmake -DCMAKE_BUILD_TYPE=Release \
       -DWITH_SYSTEM_ZLIB=ON      \
       -G Ninja .. >> ../../stepmania/build.log
 _msg "Building sm"
-cmakd --build . >> ../../stepmania/build.log
+cmake --build . >> ../../stepmania/build.log
 cd ..
 _msg "Using SM5-Build derivatives"
 rm -rf Themes/{default,home,legacy}                                                                  git clone --depth=1 https://github.com/Simply-Love/Simply-Love-SM5.git "Themes/Simply Love"          rm -rf Themes/*/.git
